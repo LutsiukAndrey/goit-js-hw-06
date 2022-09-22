@@ -1,7 +1,9 @@
 const input = document.querySelector('#validation-input')
 
+const dataLength = Number(input.dataset.length)
+
 input.addEventListener("blur", event =>{
-    if ( event.currentTarget.value.length < input.dataset.length ){
+    if ( event.currentTarget.value.length !== dataLength){
 
         input.classList.remove('valid'),
         input.classList.add('invalid')
@@ -12,3 +14,4 @@ input.addEventListener("blur", event =>{
     input.classList.add('valid');
   }
 } )
+//  можно как то по другому?
