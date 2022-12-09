@@ -1,38 +1,22 @@
-const form = document.querySelector(".login-form");
-form.addEventListener("submit", onFormSubmit);
+const form = document.querySelector('.login-form');
 const newForm = {};
-
-
-function onFormSubmit(event) {
+const onSubmit = event => {
   event.preventDefault();
-
-  if (form.email.value === "" ) {
-    alert("не не не, имейл!");
-
+  const formEl = event.currentTarget.elements;
+  if (formEl.email.value === '' || formEl.password.value === '') {
+    alert('все поля должны быть заполнены');
+  } else {
+    newForm.email = formEl.email.value;
+    newForm.password = formEl.password.value;
+    console.log(newForm);
+    event.currentTarget.reset();
   }
-  else if( form.password.value === "") {
-alert("не не не, пароль!")
-  }
-  else{
-
-      
-        const formElements = event.currentTarget.elements;
-        newForm.mail = formElements.email.value;
-        newForm.password = formElements.password.value;
-      
-      
-        let name = formElements.email.value;
-        console.log(name);
-        
-        let from = 0; 
-        let to = name.search('@');
-        let newName = name.substring(from,to);
-
-
-        console.log(newForm);
-      alert(`ну привет, ${newName}`)
-        
-      
-        event.currentTarget.reset();
-  }
-}
+};
+form.addEventListener('submit', onSubmit);
+const passwordBtn = document.querySelector('#showPass');
+const showPassword = event => {
+  if (form.password.getAttribute('type') === 'password') {
+    form.password.setAttribute('type', 'text');
+  } else form.password.setAttribute('type', 'password');
+};
+passwordBtn.addEventListener('click', showPassword);
