@@ -6,8 +6,7 @@ plusBtn.addEventListener('click', () => {
   counterValue += 1;
   if (counterValue >= 0) {
     counter.textContent = counterValue;
-  }
-  if (counterValue >= 10) {
+  } else if (counterValue >= 10) {
     alert('f');
     console.log('f');
   }
